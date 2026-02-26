@@ -1,15 +1,9 @@
-//firestore.rules
 rules_version='2'
 
 service cloud.firestore {
   match /databases/{database}/documents {
-
     function isSignedIn() {
       return request.auth != null;
-    }
-
-    function isOwner(userId) {
-      return isSignedIn() && request.auth.uid == userId;
     }
     
     function isAdmin() {
@@ -18,36 +12,15 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      // Create own profile only
-      allow create: if isOwner(userId);
-
-      // Any signed-in user can read users
+      allow create: if isSignedIn() && isOwner(userId);
       allow read: if isSignedIn();
-
-      // Delete own account OR admin
       allow delete: if isSignedIn() && (isOwner(userId) || isAdmin());
-
-       // Update rules
       allow update: if isSignedIn() && (
-        (isOwner(userId) && 
-          !request.resource.data.diff(resource.data)
-            .affectedKeys().hasAny(['role'])
-        ) ||
-        // Admin can change ONLY role
+        (isOwner(userId) && !request.resource.data.diff(resource.data)
+          .affectedKeys().hasAny(['role'])) ||
         (isAdmin() && request.resource.data.diff(resource.data)
           .affectedKeys().hasOnly(['role']))
       );
-    }
-
-    // Allow users to read questions if logged in
-    match /questions/{questionId} {
-      allow read: if true; // Everyone can see questions
-      allow write: if request.auth != null; // Only logged in users can post
-    }
-    // Allow users to read answers if logged in
-    match /answers/{answerId} {
-      allow read: if true;
-      allow write: if request.auth != null;
     }
   }
 }
