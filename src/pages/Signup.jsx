@@ -1,3 +1,4 @@
+//src/pages/Signup.jsx
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -10,7 +11,6 @@ import {
 import { auth, db } from "../firebase/config";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { Eye, EyeOff } from "lucide-react";
-// import SignupModal from "./SignupModal";
 import { LuGithub } from "react-icons/lu";
 
 // ── Brand icons ──────────────────────────────────────────────────────────────
@@ -76,7 +76,6 @@ export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [showSignup, setShowSignup] = useState(false);
   const [oauthLoading, setOauthLoading] = useState(""); // "google" | "github" | ""
 
   const navigate = useNavigate();
@@ -215,12 +214,6 @@ export default function Signup() {
           {/* Password label row with Forgot link */}
           <div className="flex items-center justify-between mb-1.5">
             <label className="text-sm text-gray-700 font-bold">Password</label>
-            <Link
-              to="/forgot-password"
-              className="text-xs text-blue-400 hover:text-blue-500"
-            >
-              Forgot?
-            </Link>
           </div>
 
           {/* Password input + eye toggle */}
@@ -250,15 +243,10 @@ export default function Signup() {
           <button
             type="submit"
             disabled={busy}
-            // onClick={() => setShowSignup(true)}
             className="w-full py-3 rounded-[11px] bg-blue-500 hover:bg-blue-600 text-white font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Creating Account..." : "Create Account"}
           </button>
-          {/* <SignupModal
-            isOpen={showSignup}
-            onClose={() => setShowSignup(false)}
-          /> */}
         </form>
 
         {/* Footer */}
