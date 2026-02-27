@@ -177,20 +177,19 @@ export default function ProfilePage() {
 
           {/* BADGES */}
           <Card className="p-6 rounded-2xl shadow-sm border bg-white mb-6">
-            <h2 className="font-semibold mb-4">Badges</h2>
-
+            <h2 className="font-semibold text-black mb-4">Badges</h2>
             <div className="grid grid-cols-3 gap-4 text-center">
-              <BadgeBox value="3" label="Gold" color="yellow" />
+              <BadgeBox value="3" label="Gold" color="amber" /> 
               <BadgeBox value="8" label="Silver" color="gray" />
               <BadgeBox value="15" label="Bronze" color="orange" />
             </div>
           </Card>
 
           {/* STATS */}
-          <Card className="p-6 rounded-2xl shadow-sm border bg-white mb-6">
-            <h2 className="font-semibold mb-4">Stats</h2>
+          <Card className="p-6 rounded-2xl shadow-sm border bg-white  mb-6">
+            <h2 className="font-semibold mb-4 text-black">Stats</h2>
 
-            <div className="grid grid-cols-4 gap-4 text-center">
+            <div className="grid grid-cols-4 gap-4 text-black text-center">
               <StatBox value="4,720" label="XP Earned" />
               <StatBox value={userQuestions.length} label="Questions" />
               <StatBox value={userAnswers.length} label="Answers" />

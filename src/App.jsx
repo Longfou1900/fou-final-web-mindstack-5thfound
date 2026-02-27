@@ -9,6 +9,8 @@ import Signup from "./pages/Signup";
 import SearchPage from "./pages/Search";
 import QuestionDetailPage from "./pages/QuestionDetail";
 import AdminDashboard from "./pages/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import ProfilePage from "./pages/Profile";
 
 export default function App() {
   return (
@@ -22,6 +24,14 @@ export default function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/search" element={<SearchPage/>} />
             <Route path="/question/:id" element={<QuestionDetailPage />}/>
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/admin" element={<AdminDashboard />} /> 
           </Routes>
         </main>
