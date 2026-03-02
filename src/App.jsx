@@ -15,7 +15,7 @@ import ForgotPassword from "./pages/forgot_password";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/fou-final-web-mindstack-5thfound/">
       <AuthProvider>
         <Header />
         <main className="min-h-screen bg-gray-950 text-white p-6">
