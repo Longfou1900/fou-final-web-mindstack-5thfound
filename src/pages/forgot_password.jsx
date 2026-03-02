@@ -85,7 +85,7 @@ export default function ForgotPassword() {
             </h2>
             <p className="text-sm text-gray-500 mb-6">
               Enter the email you signed up with and we'll send you a reset
-              link.
+              link throught your gmail in spam at the left sidebar.
             </p>
 
             {/* Error banner */}
