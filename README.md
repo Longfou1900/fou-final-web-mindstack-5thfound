@@ -21,6 +21,9 @@ npm uninstall tailwindcss --legacy-peer-deps
 npm install firebase --legacy-peer-deps
 npm install eslint@^9 --save-dev --legacy-peer-deps
 npm install -D tailwindcss@latest @tailwindcss/vite --legacy-peer-deps
+npm install gh-pages --save-dev
+npm run deploy
+npm run build
 
 <!-- legacy-peer-deps is for force when catch error by eslint -->
 
